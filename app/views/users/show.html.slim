@@ -1,0 +1,48 @@
+#mypage-user-container
+  = form_for @user, url: update_path do |f|
+    h1.ui.dividing.header ユーザー情報
+    .user-container
+      .avatar-container
+        .avatar
+          - if @user.image?
+            = image_tag(@user.image.url, size:'80x80')
+          - else
+            = image_tag('profile.png', size:'80x80')
+        
+        = f.file_field :image
+      
+      .form-container
+        .ui.form
+          .field
+            = f.label :name
+            = f.text_field :name
+          .field
+            = f.label :email
+            = f.email_field :email
+          .field
+            = f.label :password
+            = f.password_field :password
+          .field
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
+          .two.fields
+            .field
+              = f.label :university
+              = f.select :university, User.universities_i18n.keys.map { |k| [User.universities_i18n[k], k]}, {}, class: 'ui fluid dropdown'
+            .field
+              = f.label :faculty
+              = f.select :faculty, User.faculties_i18n.keys.map { |k| [User.faculties_i18n[k], k]}, {}, class: 'ui fluid dropdown'
+          .field
+            = f.submit 'UPDATE', class: 'ui primary button'
+
+#mypage-post-container
+  .box
+    - @user.posts.order(created_at: :desc).each do |post|
+      = link_to post_path(post.id) do
+        .post-box
+          .post-box-flex
+            .post-box-category = post.category.name
+            .post-box-title = post.title
+            .post-box-point = "#{post.point} Pt"
+          .post-box-description
+            = post.description

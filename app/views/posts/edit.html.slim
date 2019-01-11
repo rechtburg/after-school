@@ -1,0 +1,31 @@
+#post-edit-container
+  = form_for @post, html:{class: 'ui form'} do |f|
+    h1.ui.dividing.header
+      | 投稿
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :description
+      = f.text_field :description
+    .field
+      = f.label :body
+      = f.text_area :body, class: 'editable text-area'
+    .field
+      = f.label :point
+      = f.number_field :point
+      
+    = f.submit 'SAVE', class: 'ui primary button'
+
+javascript:
+    var editor = new MediumEditor('.editable', {
+      // placeholder settings
+      placeholder: {
+        text: 'Type your story',
+        hideOnClick: true
+      }
+    });
+
+    $('.editable').mediumInsert({
+      editor: editor
+    });

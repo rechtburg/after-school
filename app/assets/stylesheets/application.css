@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ *= require medium-editor/medium-editor
+ *= require medium-editor/themes/beagle
+ *= require medium-editor-insert-plugin
+ */
+
+ body{
+  margin:0;
+  background: linear-gradient(-45deg, rgba(246, 165, 0, .7), rgba(255, 80, 101, .7)) fixed, url(https://media.studytown.jp/wp-content/uploads/2015/07/6743-0176-1.jpg) fixed;
+  background-size: cover;
+}
+
+header {
+  position: fixed;	/* ヘッダーを固定する */
+  top: 0;	/* 上部から配置の基準位置を決める */ 
+  left: 0;	/* 左から配置の基準位置を決める */ 
+  width: 100%;	/* ヘッダーの横幅を指定する */
+  height: 60px;	/* ヘッダーの高さを指定する */
+  padding: 10px;	/* ヘッダーの余白を指定する(上下左右) */
+
+  background-color: rgba(10,10,10,0.9);	/* ヘッダーの背景色を指定する */
+  color: #ff7f50;	/* フォントの色を指定する */
+  z-index:100;
+}
+header .header-icon {
+  position:absolute;
+  top:5px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.sign-icons {
+  font-size: 55px !important;
+  color: #fff !important;
+}
+
+#flash {
+  position: fixed;
+  top: 70px;
+  width: 100%;
+  height: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  z-index: 1000;
+}
+.flash__alert{
+  background-color: red;
+}
+.flash__notice {
+  background-color: lightgreen;
+}
+
+.form-container {
+  width: 40%;
+  margin: 80px auto;
+}
+
+/* 上に戻るボタン */
+.pagetop {
+	color: #fff;
+	background-color: rgba(0,0,0,0.3);
+	text-decoration: none;
+	display: none;
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	font-size: 1.5rem;
+	width: 3.3rem;
+	height: 3.3rem;
+	line-height: 3.3rem;
+	border-radius: 3.3rem;
+	text-align: center;
+	cursor: pointer;
+}
+
+.pagetop:hover {
+	color: #fff !important;
+	background-color: #ed702b;
+	text-decoration: none;
+}

@@ -1,0 +1,34 @@
+#post-edit-container
+  = form_with model: @post, url: posts_path, html:{class: 'ui form', method: :post} do |f|
+    h1.ui.dividing.header
+      | 新規投稿
+    .field
+      = f.label :title
+      = f.text_field :title
+    .field
+      = f.label :description
+      = f.text_field :description
+    .field
+      = f.label :body
+      = f.text_area :body, class: 'editable text-area'
+    .field
+      = f.label :category_id
+      = f.select :category_id, Category.all.select(:id, :name).map{ |k| [k.name,k.id] }, {}, class: 'ui fluid dropdown'
+    .field
+      = f.label :point
+      = f.number_field :point
+      
+    = f.submit '投稿', class: 'ui primary button'
+
+javascript:
+    var editor = new MediumEditor('.editable', {
+      // placeholder settings
+      placeholder: {
+        text: ' BODY',
+        hideOnClick: true
+      }
+    });
+
+    $('.editable').mediumInsert({
+      editor: editor
+    });

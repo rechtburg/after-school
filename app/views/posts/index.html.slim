@@ -1,0 +1,74 @@
+- content_for :head do
+  javascript:
+    $(document).ready(function() { 
+      var offset = 100;
+      var duration = 500;
+      $(window).scroll(function() { 
+        if ($(this).scrollTop() > offset) { 
+          $('.pagetop').fadeIn(duration); 
+        } else { 
+          $('.pagetop').fadeOut(duration); 
+        }
+      });
+      $('.pagetop').click(function(event) { 
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, duration); return false; 
+      })
+    }); 
+
+  javascript:
+    $(document).ready(function () {
+      $('.category-panel').hide();
+      $('.category-panel').eq(0).show();
+      $('.change-panel-btn').eq(0).addClass('is-active');
+      $('.change-panel-btn').eq(0).addClass('selected');
+      
+      $('.change-panel-btn').each(function () {
+        $(this).on('click', function () {
+          var index = $('.change-panel-btn').index(this);
+          $('.change-panel-btn').removeClass('is-active');
+          $('.change-panel-btn').removeClass('selected');
+          $(this).addClass('is-active');
+          $('.category-panel').hide();
+          $('.category-panel').eq(index).show();
+        });
+      });
+    });
+
+    $('.boundary.example .post_box3_2').popup({
+      boundary: '.boundary.example .post_box3_2'
+    });
+
+
+
+
+ul.globalNav
+  - @categories.each do |category|
+    li.change-panel-btn
+      button
+        strong = category.name
+
+- @categories.each do |category|
+  div.category-panel
+    h5.ribbon4 = category.name
+    - category.posts.order(created_at: :desc).each do |post|
+      .post-container
+        .box
+          .user-container
+            .user-avatar
+              = link_to mypage_path do
+                = image_tag('profile.png', size:"60x60")
+            .user-name
+              = post.user.name
+              = post.updated_at&.strftime("\t\t%Y年%m月%d日 %H:%M")
+          = link_to post_path(post) do
+            .post_box3_2 data-content="#{post.point}"
+              .post_box_title = post.title
+              .balloon = image_tag('fukidashi.png', size:"60x60")
+              .post_box_description
+                = post.description
+              .post-box-point
+                = "#{post.point} Pt"
+
+.pagetop
+  | ↑

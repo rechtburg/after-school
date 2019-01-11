@@ -1,0 +1,62 @@
+doctype html
+html
+  head
+    title AfterSchool
+    link rel="stylesheet" type="text/css" href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css'
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application.css', media: 'all'
+    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'posts', media: 'all'
+    
+    script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"
+
+    = yield :head
+
+    javascript:
+      $('.message .close')
+      .on('click', function() {
+        $(this)
+          .closest('.message')
+          .transition('fade');
+      });
+
+      $( document ).ready(function() {
+        $('#flash').fadeOut(3000);
+      });
+
+  body
+    a[name="TOP"]
+    header
+      .header-icon[style="left:20px;"]
+        = link_to posts_path do
+          = image_tag('AS.png', size:'60x60')
+
+      - if signed_in?
+        .header-icon[style="right:170px;"] = "#{@current_user.point} Pt"
+        - if request.path == '/mypage'
+          .header-icon[style="right:100px;"]
+            = link_to logout_path, method: :delete do
+              i.fa.fa-sign-out.sign-icons
+        - else
+          .header-icon[style="right:100px;"]
+            = link_to mypage_path do
+              = image_tag('profile.png', size:'50x50')
+        .header-icon[style="right:30px;"]
+          = link_to new_post_path do
+            = image_tag('pen.png', size:'50x50')
+      - else
+        .header-icon[style="right:100px;"]
+          = link_to signup_path do
+            i.fa.fa-user-plus.sign-icons
+        .header-icon[style="right:30px;"]
+          = link_to login_path do
+            i.fa.fa-sign-in.sign-icons
+
+    - if flash[:notice]
+      #flash.flash__notice = flash[:notice]
+    - elsif flash[:alert]
+      #flash.flash__alert = flash[:alert]
+
+    = yield

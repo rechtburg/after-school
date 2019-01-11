@@ -1,0 +1,15 @@
+.form-container
+  = form_for :session, url: login_path, html:{class: 'ui form'} do |f|
+    .ui.dividing.header
+      | ログイン
+    .field
+      = f.label :email
+      = f.text_field :email
+    .field
+      = f.label :password
+      = f.password_field :password
+    .field
+      = f.label :confirmation_password
+      = f.password_field :confirmation_password
+      
+    button.ui.button type='submit' ログイン

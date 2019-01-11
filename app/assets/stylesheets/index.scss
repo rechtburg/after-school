@@ -1,0 +1,21 @@
+body {
+  background:#FFDBC9; 
+  font-family: 'Open Sans', sans-serif; 
+} 
+
+.form-container {
+  width: 70%;
+  margin: 80px auto;
+
+  .form-name {
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  #login-form { 
+    width: 400px;
+    margin: 20px auto;
+    color: #000;
+    font-size: 16px;
+  } 
+}

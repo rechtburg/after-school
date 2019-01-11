@@ -1,0 +1,54 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ情報
+      post: ポスト
+      category: カテゴリー
+    attributes:
+      user:
+        name: 氏名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        university: 大学
+        faculty: 学部
+      post:
+        title: タイトル
+        description: 概要
+        body: 本文
+        point: ポイント
+      category:
+        name: カテゴリー名
+  enums:
+    category:
+      name:
+        Information: 情報
+        Philosophy: 哲学
+        SocialScience: 社会科学
+        Language: 言語
+        NaturalScience: 自然科学
+        Math: 数学
+        Literature: 文学
+    user:
+        university:
+          UTokyo: 東京大学
+          UTT: 東京工業大学
+          Hitotsubashi: 一橋大学
+          Waseda: 早稲田大学
+          Keio: 慶應大学
+          Jochi: 上智大学
+          Meiji: 明治大学
+          Aoyama: 青山学院大学
+          Rikkyo: 立教大学
+          Chuo: 中央大学
+          Housei: 法政大学
+          ICU: 国際基督大学
+        faculty:
+          Engineering: 工学部
+          Law: 法学部
+          Literature: 文学部
+          Economics: 経済学部
+          Medical: 医学部
+          Science: 理学部
+          Medichine: 薬学部
+          Agriculture: 農学部

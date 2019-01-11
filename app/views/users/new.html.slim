@@ -1,0 +1,29 @@
+.form-container
+  = form_for @user, url: signup_path, html:{class: 'ui form'} do |f|
+    h1.ui.dividing.header 新規登録
+
+    .field
+      = f.label :name
+      = f.text_field :name
+    .field
+      = f.label :email
+      = f.email_field :email
+    .field
+      = f.label :password
+      = f.password_field :password
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+    .two.fields
+      .field
+        = f.label :university
+        = f.select :university, User.universities_i18n.keys.map { |k| [User.universities_i18n[k], k]}, {}, class: 'ui fluid dropdown'
+      .field
+        = f.label :faculty
+        = f.select :faculty, User.faculties_i18n.keys.map { |k| [User.faculties_i18n[k], k]}, {}, class: 'ui fluid dropdown'
+    
+    = f.submit '登録', class: 'ui primary button'
+
+    h2
+      a href="y" 利用規約
+    h4 必ず利用規約をお読み下さい。利用者登録すると利用規約に合意したことになります。

@@ -1,0 +1,66 @@
+#post-detail-container
+  - if @post.user.id != @current_user.id
+    .user-container
+      .user-avatar
+        .avatar
+          - if @post.user.image?
+            = image_tag(@user.image.url, size:'60x60')
+          - else
+            = image_tag('profile.png', size:'60x60')
+      .user-name
+        = @post.user.name
+        = @post.updated_at&.strftime("\t\t%Y年%m月%d日 %H:%M")
+
+  .post-box
+    .post-box-title
+      h1 = @post.title
+    .post-box-description
+      h2 = @post.description
+    .post-box-body
+      h3 = @post.body.html_safe
+    .post-box-point
+        h4 = "#{@post.point} Pt"
+  
+  - if @post.user.id == @current_user.id
+      = link_to('Edit', edit_post_path(@post), class: 'ui secondary button')
+
+#comment-container
+  .ui.comments
+    h3.ui.dividing.header リプライ
+    - @post.comments.each do |comment|
+      .comment.com-card
+        a.avatar
+          - if comment.user.image?
+            = image_tag(comment.user.image.url, size:'30x30')
+          - else
+            = image_tag('profile.png', size:'30x30')
+        .content
+          a.author = comment.user.name
+          .metadata
+            span.date = comment.updated_at&.strftime('%Y年%m月%d日 %H:%M:%S')
+          .text
+            = comment.content.html_safe
+      
+    = form_with url: posts_comment_path, html:{class: 'ui reply form'} do |f|
+      h4.ui.dividing.header エントリー
+      .field
+        = f.text_area :content, class:'editable text-area'
+        = f.hidden_field :user_id, value: @current_user.id
+        = f.hidden_field :post_id, value: @post.id
+
+      button.ui.blue.labeled.submit.icon.button type='submit'
+        i.icon.edit 
+        | Add Reply
+
+javascript:
+    var editor = new MediumEditor('.editable', {
+      // placeholder settings
+      placeholder: {
+        text: 'Start Typing',
+        hideOnClick: true
+      }
+    });
+
+    $('.editable').mediumInsert({
+      editor: editor
+    });

@@ -1,0 +1,85 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#mypage-user-container {
+  width: 80% !important;
+  margin: 80px auto;
+
+  .user-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+  
+    .avatar-container {
+      display: flex;
+      flex-direction: column;
+      width: 250px;
+      margin: 5px auto;
+  
+      .avatar {
+        margin: 5px;
+      }
+    }
+    .form-container {
+      width: 40% !important;
+      margin: 0 auto;
+    }
+  }
+}
+#mypage-post-container {
+  width: 70%;
+  margin: 5px auto;
+
+  .box {
+    .post-box {
+      background: rgba(255,242,228,0.8);/*背景色*/
+      color: #000000;/*文字色*/
+      border-radius: 10px;/*角の丸み*/
+      width: 100%;
+      margin: 20px;
+      position: relative;
+      
+      background-repeat:no-repeat;
+      background-position:100% 15pt;
+      background-size:10%;
+      
+      .post-box-flex {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5em 0.5em 0.4em;
+        text-align: center;
+        background: #ff9b38;/*タイトル文字背景色*/
+        border-bottom: 3px solid #ff7f00;/*タイトル下線*/
+        color: #ffffff;/*タイトル文字色*/
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        border-radius: 10px 10px 0 0;/*角の丸み*/
+        
+        .post-box-category {
+          text-align: left;
+          width: 20%;
+          margin-left: 10px; 
+        }
+        .post-box-title { 
+          width: 60%;
+          font-size: 1.3em;
+        }
+        .post-box-point {
+          width: 20%;
+        }
+      }
+      .balloon {
+          position: absolute;
+          top: 1em;
+          right: 1em;
+      }
+      .post-box-description {
+          text-align: left;
+          padding: 1rem 1.5em;
+          line-height: 1rem;
+      }
+    }
+  }
+}
