@@ -4,7 +4,7 @@
       .user-avatar
         .avatar
           - if @post.user.image?
-            = image_tag(@user.image.url, size:'60x60')
+            = image_tag(@post.user.image.url, size:'60x60')
           - else
             = image_tag('profile.png', size:'60x60')
       .user-name

@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
+    logger.debug(@current_user.inspect)
     remember_token = User.encrypt(cookies[:user_remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)
   end
@@ -25,7 +26,8 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:user_remember_token] = remember_token
-    user.update_attribute!(remember_token: User.encrypt(remember_token))
+    user.update_attributes!(remember_token: User.encrypt(remember_token))
+    logger.debug(user.inspect)
     @current_user = user
   end
 

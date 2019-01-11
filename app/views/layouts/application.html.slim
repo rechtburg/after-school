@@ -33,7 +33,7 @@ html
         = link_to posts_path do
           = image_tag('AS.png', size:'60x60')
 
-      - if @current_user
+      - if signed_in?
         .header-icon[style="right:170px;"] = "#{@current_user.point} Pt"
         - if request.path == '/mypage'
           .header-icon[style="right:100px;"]

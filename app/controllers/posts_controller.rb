@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_sign_in!, only: [:show, :edit, :update, :destroy]
+  before_action :require_sign_in!, only: [:show, :edit, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :add_comment, :destroy]
 
   # GET /posts
