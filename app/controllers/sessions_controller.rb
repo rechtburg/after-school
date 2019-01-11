@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       redirect_to posts_path
     else
-      flash.now[:danger] = 'invalid_password'
+      flash.now[:alert] = 'invalid_password'
       render 'new'
     end
   end
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     def set_user
       @user = User.find_by!(email: session_params[:email])
     rescue
-      flash.now[:danger] = 'invalid_mail'
+      flash.now[:alert] = 'invalid_mail'
       render action: 'new'
     end
 

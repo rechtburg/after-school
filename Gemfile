@@ -50,6 +50,8 @@ gem 'medium-editor-insert-plugin-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'faker'
+
 group :production do
   gem 'pg'
 end
@@ -58,7 +60,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do
